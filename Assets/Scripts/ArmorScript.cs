@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArmorScript : MonoBehaviour
 {
     public bool isProtected = true;
+    public PulpoController pulpoController;
 
     SpriteRenderer sprite;
     Collider2D collider2d;
@@ -14,6 +15,7 @@ public class ArmorScript : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         collider2d = GetComponent<Collider2D>();
+        pulpoController = GameObject.Find("Pulpo").GetComponent<PulpoController>();
     }
 
     // Update is called once per frame
@@ -29,5 +31,10 @@ public class ArmorScript : MonoBehaviour
             collider2d.enabled = true;
             sprite.color = new Color32(58, 58, 58, 143);
         }
+    }
+
+    private void OnDestroy() 
+    {
+        pulpoController.armors.Remove(this);
     }
 }
