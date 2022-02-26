@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Grappable
+  - LifeUnit
+  - BossLife
+  - BossLifeUnit
   layers:
   - Default
   - TransparentFX

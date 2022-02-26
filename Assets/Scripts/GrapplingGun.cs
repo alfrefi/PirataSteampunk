@@ -58,6 +58,9 @@ namespace MovementWithHook
         public float attackDelay = 0.2f;
         public float attackDelayCounter = 0.0f;
 
+        public GameObject[] lifePoints;
+        public int vidaBoss;
+
         private void Start()
         {
             grappleRope.enabled = false;
@@ -213,6 +216,8 @@ namespace MovementWithHook
             {
                 if ( autoConfigureDistance || ( grapplePoint.transform.parent?.name ?? "") == "armor" )
                 {
+                    //Debug.Log("HEADSHOT");
+                    substractLife();
                     m_springJoint2D.autoConfigureDistance = true;
                     m_springJoint2D.frequency = 0;
                 }
@@ -239,6 +244,22 @@ namespace MovementWithHook
                         m_rigidbody.velocity = Vector2.zero;
                         break;
                 }
+            }
+        }
+
+        public void substractLife()
+        {
+            lifePoints = GameObject.FindGameObjectsWithTag("BossLifeUnit");
+            vidaBoss = lifePoints.Length;
+            int count = 1;
+
+            foreach (GameObject lifePoint in lifePoints)
+            {
+                if(count == 1)
+                {
+                    Destroy(lifePoint);
+                }
+                count++;
             }
         }
         
