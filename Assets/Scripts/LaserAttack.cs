@@ -16,11 +16,15 @@ public class LaserAttack : MonoBehaviour
     public GameObject verticalLaser;
 
     public GameObject player;
+    private Animator animator;
     private bool isShooting;
+    private bool charginStarted;
+    private bool doneLasering;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -47,11 +51,30 @@ public class LaserAttack : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * positioningSpeed);
         }
 
-        StartCoroutine(ShootLaser());
+        if (!charginStarted)
+        {
+            StartCoroutine(ShootLaser());
+        }
+
+        if (doneLasering)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * positioningSpeed);
+
+            if ( transform.rotation.eulerAngles.z <= 1 )
+            {
+                isShooting = false;
+                doneLasering = false;
+                charginStarted = false;
+                enabled = false;
+            }
+        }
     }
 
     IEnumerator ShootLaser()
     {
+        charginStarted = true;
+        animator.SetBool("IsChargingLaser", true);
+
         yield return new WaitForSeconds(chargeTime);
 
         isShooting = true;
@@ -68,11 +91,13 @@ public class LaserAttack : MonoBehaviour
 
         var laserInstance = GameObject.Instantiate(laser, transform.position, Quaternion.identity);
         laserInstance.GetComponent<LaserScript>().laserAttack = this;
+
+        animator.SetBool("IsAttacking", true);
     }
 
     public void DoneLasering()
     {
-        isShooting = false;
-        enabled = false;
+        animator.SetBool("IsAttacking", false);
+        doneLasering = true;
     }
 }

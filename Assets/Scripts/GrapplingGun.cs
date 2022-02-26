@@ -131,6 +131,11 @@ namespace MovementWithHook
                     movingPlatform.CanMove = true;
                 }
 
+                if ( (grapplePoint.transform.parent?.name ?? "") == "armor" )
+                {
+                    Destroy(grapplePoint.transform.parent.gameObject);
+                }
+
                 Destroy(grapplePoint);
                 shotGrappleGun = false;
             }
@@ -214,7 +219,7 @@ namespace MovementWithHook
             }
             if ( !launchToPoint )
             {
-                if ( autoConfigureDistance || ( grapplePoint.transform.parent?.name ?? "") == "armor" )
+                if ( autoConfigureDistance || (grapplePoint.transform.parent?.name ?? "") == "armor" )
                 {
                     //Debug.Log("HEADSHOT");
                     substractLife();

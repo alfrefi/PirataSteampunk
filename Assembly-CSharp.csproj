@@ -35,6 +35,37 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2020.3.26f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\Jump.cs" />
+    <Compile Include="Assets\Scripts\CharacterCollision.cs" />
+    <Compile Include="Assets\Scripts\BatMovement.cs" />
+    <Compile Include="Assets\Scripts\Hook.cs" />
+    <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
+    <Compile Include="Assets\Scripts\BashAttack.cs" />
+    <Compile Include="Assets\Scripts\GrapplingGun.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\GrapplingRope.cs" />
+    <Compile Include="Assets\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\FlyingBehavior.cs" />
+    <Compile Include="Assets\Scripts\LaserAttack.cs" />
+    <Compile Include="Assets\Scripts\Orientation.cs" />
+    <Compile Include="Assets\Scripts\PulpoController.cs" />
+    <Compile Include="Assets\Scripts\LaserScript.cs" />
+    <Compile Include="Assets\Scripts\PulpoAnimationStateBehavior.cs" />
+    <Compile Include="Assets\ArmorScript.cs" />
+  </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Jump.cs" />
      <Compile Include="Assets\Scripts\Orientation.cs" />
