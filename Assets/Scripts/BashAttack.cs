@@ -17,10 +17,15 @@ public class BashAttack : MonoBehaviour
     public bool bashAttackDone;
     public bool rotationDone;
 
+    private Animator animator;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         originalRotation = transform.rotation;
+
+        animator = GetComponent<Animator>();
+
         Reset();
     }
 
@@ -28,12 +33,14 @@ public class BashAttack : MonoBehaviour
     {
         if ( target.Equals(Vector3.negativeInfinity) )
         {
+            animator.SetBool("IsChargingBash", true);
+            
             origin = transform.position;
             target = player.transform.position;
         }
 
-        if ( LookAt(target) ) { 
-            
+        if ( LookAt(target) ) {
+            animator.SetBool("IsAttacking", true);
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * bashSpeed);
             
             distance = Vector3.Distance(transform.position, target);
@@ -41,6 +48,7 @@ public class BashAttack : MonoBehaviour
             {
                 rotationDone = false;
                 bashAttackDone = true;
+                animator.SetBool("IsAttacking", false);
             }
         }
 

@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\PulpoController.cs" />
     <Compile Include="Assets\Scripts\LaserScript.cs" />
     <Compile Include="Assets\Scripts\PulpoAnimationStateBehavior.cs" />
+    <Compile Include="Assets\ArmorScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
