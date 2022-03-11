@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\PulpoStances.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Direction.cs" />
+    <Compile Include="Assets\Scripts\MousePointer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

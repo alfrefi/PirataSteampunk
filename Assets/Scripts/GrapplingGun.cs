@@ -32,7 +32,7 @@ namespace MovementWithHook
 
         [Header("Distance:")]
         [SerializeField] private bool hasMaxDistance = false;
-        [SerializeField] private float maxDistance = 20;
+        [SerializeField] public float maxDistance = 20;
 
         private enum LaunchType
         {
