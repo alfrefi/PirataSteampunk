@@ -16,7 +16,8 @@ public class FlyingBehavior : MonoBehaviour
 
     void PositionChange()
     {
-        newPosition = new Vector2(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f));
+        newPosition = new Vector2(Random.Range(transform.position.x - 10.0f, transform.position.x + 10.0f), 
+                                  Random.Range(transform.position.y, transform.position.y + 2.0f));
     }
 
     void Update()
@@ -37,5 +38,10 @@ public class FlyingBehavior : MonoBehaviour
 
         Quaternion endRotation = Quaternion.AngleAxis(angle, Vector3.back);
         transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, Time.deltaTime * rotateSpeed);
+    }
+
+    internal void SetPositionToBottom()
+    {
+        newPosition = new Vector2(transform.position.x, 0f);
     }
 }

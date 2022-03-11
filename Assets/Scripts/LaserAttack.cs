@@ -8,6 +8,7 @@ public class LaserAttack : MonoBehaviour
     public float positioningSpeed;
 
     public Orientation attackOrientation;
+    public Direction horizontalAttackDirection;
 
     public float horizontalDistanceFromPlayer;
     public float VerticalDistanceFromPlayer;
@@ -42,8 +43,18 @@ public class LaserAttack : MonoBehaviour
                     target = new Vector2(player.transform.position.x, player.transform.position.y + VerticalDistanceFromPlayer);
                     break;
                 case Orientation.Horizontal:
-                    target = new Vector2(player.transform.position.x + horizontalDistanceFromPlayer, player.transform.position.y);
-                    rotation = Quaternion.Euler(0, 0, -90);
+                    if ( player.transform.position.x < transform.position.x )
+                    {
+                        target = new Vector2(player.transform.position.x + horizontalDistanceFromPlayer, player.transform.position.y);
+                        rotation = Quaternion.Euler(0, 0, -90);
+                        horizontalAttackDirection = Direction.ToLeft;
+                    }
+                    else
+                    {
+                        target = new Vector2(player.transform.position.x - horizontalDistanceFromPlayer, player.transform.position.y);
+                        rotation = Quaternion.Euler(0, 0, 90);
+                        horizontalAttackDirection = Direction.ToRight;
+                    }
                     break;
             }
 
@@ -91,6 +102,12 @@ public class LaserAttack : MonoBehaviour
 
         var laserInstance = GameObject.Instantiate(laser, transform.position, Quaternion.identity);
         laserInstance.GetComponent<LaserScript>().laserAttack = this;
+        
+        //Voltea el laser cuando se dispara desde la izquierda hacia la derecha
+        if ( attackOrientation == Orientation.Horizontal && horizontalAttackDirection == Direction.ToRight )
+        {
+            laserInstance.transform.localScale = new Vector3(-1, 1, 1); ;
+        }
 
         animator.SetBool("IsAttacking", true);
     }

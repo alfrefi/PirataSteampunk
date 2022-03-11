@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,6 @@ public class ArmorScript : MonoBehaviour
 
     private void OnDestroy() 
     {
-        pulpoController.armors.Remove(this);
+        pulpoController.RemoveArmor(this);
     }
 }

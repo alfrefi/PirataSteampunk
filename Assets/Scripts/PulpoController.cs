@@ -18,7 +18,10 @@ public class PulpoController : MonoBehaviour
     public GameObject[] armorsGO;
     public CircleCollider2D circuloCollider;
 
-    
+    public PulpoStances stance = PulpoStances.Vulnerable;
+
+    public bool ProtectedArmorsOnAttack { get; private set; }
+
     void Awake()
     {
         flyingBehavior = GetComponent<FlyingBehavior>();
@@ -33,6 +36,7 @@ public class PulpoController : MonoBehaviour
     {
         lifePoints = GameObject.FindGameObjectsWithTag("BossLifeUnit");
         vidaBoss = lifePoints.Length;
+
         if(vidaBoss == 0)
         {
             GameManager.Instance.juegoTerminado = true;
@@ -44,6 +48,7 @@ public class PulpoController : MonoBehaviour
             flyingBehavior.enabled = true;
             StartCoroutine(DoAttack());
         }
+
         if(armors.Count == 0)
         {
             circuloCollider.enabled = true;
@@ -54,7 +59,7 @@ public class PulpoController : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBetweenAttacks);
         
-        ChangeArmorProtection(false);
+        ChangeArmorProtection(ProtectedArmorsOnAttack);
 
         int attack = UnityEngine.Random.Range(1, 3);
 
@@ -95,6 +100,34 @@ public class PulpoController : MonoBehaviour
                 count++;
             }
         }
-        
+    }
+
+    internal void RemoveArmor(ArmorScript armorScript)
+    {
+        armors.Remove(armorScript);
+
+        ChangeStance(PulpoStances.Aggressive);
+        flyingBehavior.SetPositionToBottom();
+    }
+
+    public void ChangeStance(PulpoStances newStance)
+    {
+        // Hacer algo para esperar a que termine de hacer un ataque si es que lo esta haciendo antes de cambiar de 
+        if ( bashAttack.enabled || laserAttack.enabled ) { }
+
+        stance = newStance;
+        if (stance == PulpoStances.Aggressive)
+        {
+            ProtectedArmorsOnAttack = true;
+            laserAttack.attackOrientation = Orientation.Horizontal;
+            GetComponent<MissileAttackBehavior>().enabled = true;
+        } 
+        else if (stance == PulpoStances.Vulnerable)
+        {
+            ProtectedArmorsOnAttack = false;
+            laserAttack.attackOrientation = Orientation.Vertical;
+            GetComponent<MissileAttackBehavior>().enabled = false;
+        }
+
     }
 }

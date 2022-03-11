@@ -196,7 +196,12 @@ namespace MovementWithHook
                 if ( grapplePoint != null ) Destroy(grapplePoint);
 
                 var targetPosition = (Vector2)m_camera.ScreenToWorldPoint(Input.mousePosition);
-                var position = (Vector2)firePoint.position + (targetPosition - (Vector2)firePoint.position).normalized * maxDistance;
+                var position = targetPosition;
+                
+                if (Vector2.Distance(firePoint.position, targetPosition) > maxDistance )
+                {
+                    position = (Vector2)firePoint.position + (targetPosition - (Vector2)firePoint.position).normalized * maxDistance;
+                }
 
                 grapplePoint = new GameObject("GrapplePoint");
                 grapplePoint.transform.position = position;

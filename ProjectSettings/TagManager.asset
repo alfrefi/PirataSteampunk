@@ -9,6 +9,7 @@ TagManager:
   - BossLife
   - BossLifeUnit
   - armor
+  - Pulpo
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - 
   - 
   - GrappleStuff
-  - 
-  - 
+  - PulpoBehaviorZones
+  - Pulpo
   - 
   - 
   - 

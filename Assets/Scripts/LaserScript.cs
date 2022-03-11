@@ -30,7 +30,6 @@ public class LaserScript : MonoBehaviour
 
         laserCollider = GetComponent<BoxCollider2D>();
         laserCollider.size = new Vector2(m_ScaleX, m_ScaleY);*/
-
     }
 
     void Update()
