@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1302771911820280070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475086194832946631}
+  - component: {fileID: 89498816254650402}
+  m_Layer: 2
+  m_Name: PulpoFullHitbox_Idle_1
+  m_TagString: CanDamagePlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475086194832946631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302771911820280070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &89498816254650402
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302771911820280070}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.125, y: 9.25}
+    newSize: {x: 10.125, y: 9.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.0614347, y: 4.6087046}
+      - {x: -1.1155872, y: 4.577347}
+      - {x: -2.1907825, y: 3.8972902}
+      - {x: -2.6748142, y: 3.183092}
+      - {x: -2.7469072, y: 1.9845071}
+      - {x: -2.40168, y: 1.0015388}
+      - {x: -1.7802448, y: 0.2899381}
+      - {x: -2.097412, y: -0.2435317}
+      - {x: -4.6779346, y: 0.5241908}
+      - {x: -5.139594, y: -0.36027002}
+      - {x: -4.2759185, y: -1.8537639}
+      - {x: -4.840472, y: -2.6041622}
+      - {x: -5.158649, y: -3.6463733}
+      - {x: -4.433856, y: -4.1218324}
+      - {x: -3.786552, y: -3.2520797}
+      - {x: -3.788322, y: -2.4929667}
+      - {x: -2.4054127, y: -2.783071}
+      - {x: -1.9240961, y: -2.4897382}
+      - {x: -1.7359982, y: -3.7067459}
+      - {x: -0.6975622, y: -4.7319436}
+      - {x: 0.48576546, y: -4.3549986}
+      - {x: 0.51374626, y: -3.662112}
+      - {x: 1.3136864, y: -3.3659134}
+      - {x: 1.7203751, y: -2.4475398}
+      - {x: 1.7749462, y: -2.1630204}
+      - {x: 2.6640797, y: -2.639617}
+      - {x: 3.7176895, y: -2.2136004}
+      - {x: 4.1240377, y: -2.3064284}
+      - {x: 3.7844677, y: -2.9181733}
+      - {x: 3.9487753, y: -3.661434}
+      - {x: 4.3977995, y: -3.9478703}
+      - {x: 4.9449196, y: -3.8039532}
+      - {x: 5.110799, y: -3.4035947}
+      - {x: 4.9261646, y: -2.336617}
+      - {x: 4.3573437, y: -1.3967423}
+      - {x: 4.8612366, y: -0.829229}
+      - {x: 4.9134836, y: 0.15183198}
+      - {x: 4.214629, y: 0.3732624}
+      - {x: 2.8947582, y: -0.17550623}
+      - {x: 2.151348, y: -0.32280838}
+      - {x: 1.7627811, y: 0.11131692}
+      - {x: 2.5395193, y: 1.5529568}
+      - {x: 2.697878, y: 2.546331}
+      - {x: 2.3279514, y: 3.8364778}

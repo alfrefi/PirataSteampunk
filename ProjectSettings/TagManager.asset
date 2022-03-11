@@ -10,6 +10,7 @@ TagManager:
   - BossLifeUnit
   - armor
   - Pulpo
+  - CanDamagePlayer
   layers:
   - Default
   - TransparentFX

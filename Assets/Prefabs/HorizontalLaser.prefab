@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsToDestroy: 2
   laserAttack: {fileID: 0}
+  laserCollider: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &5227943563016456051
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,9 +59,9 @@ GameObject:
   - component: {fileID: 5227943563016456062}
   - component: {fileID: 5227943563016456049}
   - component: {fileID: 5227943563016456048}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HorizontalLaserSprite
-  m_TagString: Untagged
+  m_TagString: CanDamagePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

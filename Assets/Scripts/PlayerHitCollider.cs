@@ -6,6 +6,8 @@ public class PlayerHitCollider : MonoBehaviour
 {
     public GameObject[] lifePoints;
     public int vidaPlayer;
+    public List<string> CanDamagePlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,10 @@ public class PlayerHitCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("ME PEGAN!");
-        substractLife();
+        if (CanDamagePlayer.Contains(collision.tag) )
+        {
+            substractLife();
+        }
     }
 
     public void substractLife()

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2420669155808359493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2880930434681503876}
+  - component: {fileID: 2420669155808359492}
+  m_Layer: 2
+  m_Name: PulpoFullHitbox_LaserShot
+  m_TagString: CanDamagePlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2880930434681503876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420669155808359493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2420669155808359492
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420669155808359493}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.8389406, y: 0.3399446}
+      - {x: 2.7134829, y: 1.2087462}
+      - {x: 1.8573418, y: 1.5846572}
+      - {x: 2.227748, y: 2.8050735}
+      - {x: 1.9162607, y: 4.235496}
+      - {x: 1.0114222, y: 5.0185404}
+      - {x: 0.013066292, y: 5.1390204}
+      - {x: -1.0692816, y: 4.9764385}
+      - {x: -1.9694614, y: 4.254439}
+      - {x: -2.2612524, y: 2.7592936}
+      - {x: -1.8545141, y: 1.554621}
+      - {x: -2.7502422, y: 1.2076585}
+      - {x: -2.8195448, y: 0.2773775}
+      - {x: -2.268283, y: -0.6615702}
+      - {x: -1.4769392, y: -0.82157195}
+      - {x: -2.2516484, y: -1.7622724}
+      - {x: -0.40613937, y: -5.176659}
+      - {x: 0.43772125, y: -5.1635046}
+      - {x: 2.2516484, y: -1.7622722}
+      - {x: 1.4258728, y: -0.85372925}
+      - {x: 2.3202782, y: -0.6962336}
