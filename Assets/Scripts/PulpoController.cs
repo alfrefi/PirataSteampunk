@@ -12,6 +12,8 @@ public class PulpoController : MonoBehaviour
     private FlyingBehavior flyingBehavior;
     private BashAttack bashAttack;
     private LaserAttack laserAttack;
+    private MissileAttackBehavior missileAttackBehavior;
+    private AngryShakeBehavior angryshakeBehavior;
 
     public GameObject[] lifePoints;
     public int vidaBoss;
@@ -27,6 +29,9 @@ public class PulpoController : MonoBehaviour
         flyingBehavior = GetComponent<FlyingBehavior>();
         bashAttack = GetComponent<BashAttack>();
         laserAttack = GetComponent<LaserAttack>();
+        missileAttackBehavior = GetComponent<MissileAttackBehavior>();
+        angryshakeBehavior = GetComponent<AngryShakeBehavior>();
+
         circuloCollider = GetComponent<CircleCollider2D>();
         circuloCollider.enabled = false;
     }
@@ -41,7 +46,7 @@ public class PulpoController : MonoBehaviour
         {
             GameManager.Instance.juegoTerminado = true;
         }
-        if ( !flyingBehavior.enabled && !bashAttack.enabled && !laserAttack.enabled )
+        if ( !flyingBehavior.enabled && !bashAttack.enabled && !laserAttack.enabled && !angryshakeBehavior.enabled)
         {
             ChangeArmorProtection(true);
 
@@ -106,28 +111,37 @@ public class PulpoController : MonoBehaviour
     {
         armors.Remove(armorScript);
 
+        if (angryshakeBehavior != null )
+        {
+            angryshakeBehavior.enabled = true;
+        }
+
         ChangeStance(PulpoStances.Aggressive);
         flyingBehavior.SetPositionToBottom();
     }
 
     public void ChangeStance(PulpoStances newStance)
     {
-        // Hacer algo para esperar a que termine de hacer un ataque si es que lo esta haciendo antes de cambiar de 
-        if ( bashAttack.enabled || laserAttack.enabled ) { }
+        // Hacer algo para esperar a que termine de hacer un ataque si es que lo esta haciendo antes de cambiar de estado
+        if ( bashAttack.enabled || laserAttack.enabled ) { return; }
 
         stance = newStance;
         if (stance == PulpoStances.Aggressive)
         {
             ProtectedArmorsOnAttack = true;
             laserAttack.attackOrientation = Orientation.Horizontal;
-            GetComponent<MissileAttackBehavior>().enabled = true;
+            missileAttackBehavior.enabled = true;
         } 
         else if (stance == PulpoStances.Vulnerable)
         {
             ProtectedArmorsOnAttack = false;
             laserAttack.attackOrientation = Orientation.Vertical;
-            GetComponent<MissileAttackBehavior>().enabled = false;
+            missileAttackBehavior.enabled = false;
         }
+    }
 
+    public bool AttackInProgress()
+    {
+        return laserAttack.enabled || bashAttack.enabled;
     }
 }

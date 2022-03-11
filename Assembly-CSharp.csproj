@@ -83,6 +83,7 @@
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Direction.cs" />
     <Compile Include="Assets\Scripts\MousePointer.cs" />
+    <Compile Include="Assets\Scripts\AngryShakeBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

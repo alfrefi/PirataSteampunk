@@ -11,6 +11,7 @@ TagManager:
   - armor
   - Pulpo
   - CanDamagePlayer
+  - Platform
   layers:
   - Default
   - TransparentFX
