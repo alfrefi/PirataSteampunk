@@ -19,12 +19,15 @@ public class BashAttack : MonoBehaviour
 
     private Animator animator;
 
+    private GlowingBehavior glowingBehavior;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         originalRotation = transform.rotation;
 
         animator = GetComponent<Animator>();
+        glowingBehavior = GetComponent<GlowingBehavior>();
 
         Reset();
     }
@@ -34,7 +37,8 @@ public class BashAttack : MonoBehaviour
         if ( target.Equals(Vector3.negativeInfinity) )
         {
             animator.SetBool("IsChargingBash", true);
-            
+            glowingBehavior.DoGlow = true;
+
             origin = transform.position;
             target = player.transform.position;
         }
@@ -54,6 +58,8 @@ public class BashAttack : MonoBehaviour
 
         if (bashAttackDone)
         {
+            glowingBehavior.DoDeGlow = true;
+
             StartCoroutine(AnimateRotationTowards(transform, Quaternion.identity, 1f));
 
             if ( rotationDone ) 

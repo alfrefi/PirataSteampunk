@@ -22,10 +22,13 @@ public class LaserAttack : MonoBehaviour
     private bool charginStarted;
     private bool doneLasering;
 
+    private GlowingBehavior glowingBehavior;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
+        glowingBehavior = GetComponent<GlowingBehavior>();
     }
 
     // Update is called once per frame
@@ -36,7 +39,7 @@ public class LaserAttack : MonoBehaviour
             var position = transform.position;
             Vector2 target = Vector2.zero;
             Quaternion rotation = Quaternion.identity;
-
+            
             switch ( attackOrientation )
             {
                 case Orientation.Vertical:
@@ -85,6 +88,7 @@ public class LaserAttack : MonoBehaviour
     {
         charginStarted = true;
         animator.SetBool("IsChargingLaser", true);
+        glowingBehavior.DoGlow = true;
 
         yield return new WaitForSeconds(chargeTime);
 
@@ -114,6 +118,7 @@ public class LaserAttack : MonoBehaviour
 
     public void DoneLasering()
     {
+        glowingBehavior.DoDeGlow = true;
         animator.SetBool("IsAttacking", false);
         doneLasering = true;
     }

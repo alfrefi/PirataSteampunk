@@ -10,10 +10,13 @@ public class MissileAttackBehavior : MonoBehaviour
     public Transform SpawnPoint;
 
     private bool isShooting = false;
+
+    private GlowingBehavior glowingBehavior;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        glowingBehavior = GetComponent<GlowingBehavior>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,8 @@ public class MissileAttackBehavior : MonoBehaviour
     {
         isShooting = true;
         yield return new WaitForSeconds(DelayBetweenMissiles);
+        glowingBehavior.glowForSecondsTime = 1f;
+        glowingBehavior.DoGlowDeGlow = true;
         Instantiate(MissilePrefab, SpawnPoint.position, Quaternion.identity);
         isShooting = false;
     }

@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Direction.cs" />
     <Compile Include="Assets\Scripts\MousePointer.cs" />
     <Compile Include="Assets\Scripts\AngryShakeBehavior.cs" />
+    <Compile Include="Assets\Scripts\GlowingBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
