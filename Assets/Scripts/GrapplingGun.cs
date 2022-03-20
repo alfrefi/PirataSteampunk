@@ -12,6 +12,7 @@ namespace MovementWithHook
         [Header("Layers Settings:")]
         [SerializeField] private bool grappleToAll = false;
         [SerializeField] private int grappableLayerNumber = 9;
+        [SerializeField] private LayerMask grapplebleLayers;
 
         [Header("Main Camera:")]
         public Camera m_camera;
@@ -82,7 +83,8 @@ namespace MovementWithHook
                 }
                 else
                 {
-                    Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                    //Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 mousePos = m_camera.GetWorldPositionOnPlane(Input.mousePosition);
                     RotateGun(mousePos, true);
                 }
 
@@ -141,7 +143,8 @@ namespace MovementWithHook
                 shotGrappleGun = false;
                 movement.CanMove = true;
                 grappleRope.isAttack = false;
-                Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                //Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePos = m_camera.GetWorldPositionOnPlane(Input.mousePosition);
                 RotateGun(mousePos, true);
             }
 
@@ -169,12 +172,36 @@ namespace MovementWithHook
 
         void SetGrapplePoint()
         {
-
-            Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+            Vector2 mousePosition = m_camera.GetWorldPositionOnPlane(Input.mousePosition);
+            Vector2 distanceVector = mousePosition - (Vector2)gunPivot.position;
+            Vector2 aimPosition;
+            //Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
             
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
-            if ( _hit )
+            RaycastHit2D[] _hits = Physics2D.RaycastAll(firePoint.position, distanceVector.normalized, distanceVector.magnitude, grapplebleLayers);
+
+            if ( _hits.Length > 0 )
             {
+
+                if ( Vector2.Distance(firePoint.position, mousePosition) <= 10 )
+                {
+                    aimPosition = mousePosition;
+                }
+                else
+                {
+                    aimPosition = (Vector2)firePoint.position + (mousePosition - (Vector2)firePoint.position).normalized * maxDistance;
+                }
+
+                RaycastHit2D _hit = _hits[0];
+                for ( int i = 1; i < _hits.Length; i++ )
+                {
+                    RaycastHit2D hitPoint = _hits[i];
+                    var hitpointMouseDistance = Vector2.Distance(hitPoint.point, aimPosition);
+                    if ( hitpointMouseDistance <= Vector2.Distance(_hit.point, aimPosition) )
+                    {
+                        _hit = hitPoint;
+                    }
+                }
+
                 if ( _hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll )
                 {
                     if ( Vector2.Distance(_hit.point, firePoint.position) <= maxDistance + .25 || !hasMaxDistance )
@@ -195,7 +222,8 @@ namespace MovementWithHook
             {
                 if ( grapplePoint != null ) Destroy(grapplePoint);
 
-                var targetPosition = (Vector2)m_camera.ScreenToWorldPoint(Input.mousePosition);
+                //var targetPosition = (Vector2)m_camera.ScreenToWorldPoint(Input.mousePosition);
+                var targetPosition = (Vector2)m_camera.GetWorldPositionOnPlane(Input.mousePosition);
                 var position = targetPosition;
                 
                 if (Vector2.Distance(firePoint.position, targetPosition) > maxDistance )

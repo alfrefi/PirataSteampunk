@@ -17,10 +17,12 @@ namespace MovementWithHook
         public float collisionRadius = 0.25f;
         public Vector2 bottomOffset;//, rightOffset, leftOffset;
 
+        private Animator animator;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            animator = transform.GetChild(0).GetComponent<Animator>();
         }
 
         // Update is called once per frame
