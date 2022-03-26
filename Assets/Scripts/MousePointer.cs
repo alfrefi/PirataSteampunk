@@ -22,7 +22,10 @@ public class MousePointer : MonoBehaviour
     void Update()
     {
         Vector2 aimPosition;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition = Camera.main.GetWorldPositionOnPlane(Input.mousePosition);
+
+        Debug.Log(mousePosition);
         
         if (Vector2.Distance(center.transform.position, mousePosition) <= 10) 
         {
@@ -40,4 +43,5 @@ public class MousePointer : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, .5f);
     }
+
 }

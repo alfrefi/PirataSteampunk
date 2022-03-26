@@ -69,11 +69,16 @@
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\FlyingBehavior.cs" />
+    <Compile Include="Assets\Scripts\MousePointer.cs" />
     <Compile Include="Assets\Scripts\PulpoZonesBehavior.cs" />
+    <Compile Include="Assets\Scripts\GlowingBehavior.cs" />
+    <Compile Include="Assets\Scripts\AngryShakeBehavior.cs" />
     <Compile Include="Assets\Scripts\ArmorScript.cs" />
+    <Compile Include="Assets\Scripts\Extensions\CameraExtensions.cs" />
     <Compile Include="Assets\Scripts\LaserAttack.cs" />
     <Compile Include="Assets\Scripts\CharacterCollision.cs" />
     <Compile Include="Assets\Scripts\PlayerHitCollider.cs" />
+    <Compile Include="Assets\Scripts\Direction.cs" />
     <Compile Include="Assets\Scripts\Hook.cs" />
     <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Scripts\PulpoController.cs" />
@@ -81,10 +86,7 @@
     <Compile Include="Assets\Scripts\BashAttack.cs" />
     <Compile Include="Assets\Scripts\PulpoStances.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Direction.cs" />
-    <Compile Include="Assets\Scripts\MousePointer.cs" />
-    <Compile Include="Assets\Scripts\AngryShakeBehavior.cs" />
-    <Compile Include="Assets\Scripts\GlowingBehavior.cs" />
+    <Compile Include="Assets\PirateAnimationStateBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

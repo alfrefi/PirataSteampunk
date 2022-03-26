@@ -17,11 +17,14 @@ namespace MovementWithHook
         public float lowJumpMultiplier = 2f;
         public bool jumpedFromRope = false;
 
+        private Animator animator;
+
         // Start is called before the first frame update
         void Start()
         {
             body2d = GetComponent<Rigidbody2D>();
             charColl = GetComponent<CharacterCollision>();
+            animator = transform.GetChild(0).GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -33,6 +36,8 @@ namespace MovementWithHook
                 body2d.velocity += Vector2.up * jumpForce;
 
                 jumpedFromRope = false;
+
+                animator.SetBool("Jumped", true);
             }
         }
     }
