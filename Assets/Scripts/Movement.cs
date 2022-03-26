@@ -52,6 +52,7 @@ namespace MovementWithHook
 
             animator.SetBool("IsRunning", xMov != 0);
             animator.SetBool("IsGrounded", charColl.onGround);
+            animator.SetFloat("YVelocity", body2d.velocity.y);
         }
     }
 }

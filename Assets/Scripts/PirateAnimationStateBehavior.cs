@@ -7,16 +7,13 @@ public class PirateAnimationStateBehavior : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if ( stateInfo.IsName("PirateJumpAnimation") )
-        {
-            animator.SetBool("Jumped", false);
-        }
+        animator.SetBool("Jumped", false);
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //
     //}
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine

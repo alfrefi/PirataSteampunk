@@ -58,11 +58,14 @@ namespace MovementWithHook
 
         public float attackDelay = 0.2f;
         public float attackDelayCounter = 0.0f;
+        private Animator animator;
 
         private void Start()
         {
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
+
+            animator = gunHolder.GetComponentInChildren<Animator>();
         }
 
         private void Update()
@@ -71,7 +74,6 @@ namespace MovementWithHook
             {
                 shotGrappleGun = true;
                 movement.CanMove = false;
-
                 SetGrapplePoint();
             }
             else if ( (shotGrappleGun && !(Input.GetKeyUp(KeyCode.Mouse0) || Input.GetButtonDown("Jump")) ) 
@@ -153,6 +155,8 @@ namespace MovementWithHook
                 attackDelayCounter += Time.deltaTime;
             }
 
+            animator.SetBool("ShotHook", shotGrappleGun && !grappleRope.isGrappling);
+            animator.SetBool("IsHooked", grappleRope.isGrappling);
         }
 
         void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
@@ -282,7 +286,7 @@ namespace MovementWithHook
             }
         }
         
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             if ( firePoint != null && hasMaxDistance )
             {

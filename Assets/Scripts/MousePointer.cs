@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MousePointer : MonoBehaviour
 {
+    
     GameObject player;
     GameObject center;
 
@@ -25,7 +26,7 @@ public class MousePointer : MonoBehaviour
         //Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePosition = Camera.main.GetWorldPositionOnPlane(Input.mousePosition);
 
-        Debug.Log(mousePosition);
+        //Debug.Log(mousePosition);
         
         if (Vector2.Distance(center.transform.position, mousePosition) <= 10) 
         {
@@ -43,5 +44,4 @@ public class MousePointer : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, .5f);
     }
-
 }
