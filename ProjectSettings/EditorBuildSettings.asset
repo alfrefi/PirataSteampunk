@@ -8,4 +8,22 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/FigthDesignMenu.unity
+    guid: 5442a53d54e8c7b4fa56fbabe6d49d7e
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: aee582b2d326b224c93374de8e62b887
+  - enabled: 1
+    path: Assets/Scenes/Tutorial-02.unity
+    guid: e5aac71accbee974082477af7fde380b
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: cd94f5064aef35d41b16baac52c35b1d
+  - enabled: 1
+    path: Assets/Scenes/FightDesign.unity
+    guid: 404db5ec2ddc1e04bb7a294b52e9bb29
+  - enabled: 1
+    path: Assets/Scenes/BossFight.unity
+    guid: dd655f61dc21d034eba598c85e68d64b
   m_configObjects: {}

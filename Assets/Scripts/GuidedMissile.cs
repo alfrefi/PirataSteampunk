@@ -35,7 +35,7 @@ public class GuidedMissile : MonoBehaviour
         //if ( collision.tag == "Player" )
         if ( collision.name == "HitCollider" && collision.transform.parent.tag == "Player" )
         {
-			collision.GetComponent<PlayerHitCollider>().substractLife();
+			collision.GetComponent<PlayerHitCollider>().SubstractLife();
             Destroy(gameObject);
         }
 		else if ( collision.name == "Hook" )

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,21 +25,42 @@ namespace MovementWithHook
         {
             body2d = GetComponent<Rigidbody2D>();
             charColl = GetComponent<CharacterCollision>();
-            animator = transform.GetChild(0).GetComponent<Animator>();
+            animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if ( jumped && charColl.onGround || jumpedFromRope)
+
+            if ( jumped && charColl.onGround || jumpedFromRope )
             {
-                body2d.velocity = new Vector2(body2d.velocity.x, 0);
-                body2d.velocity += Vector2.up * jumpForce;
+                if ( Input.GetAxis("Vertical") < 0 )
+                {
+                    var collision = charColl.collision;
+                    if ( collision != null && collision.tag == "Platform" )
+                    {
+                        collision.enabled = false;
 
-                jumpedFromRope = false;
+                        StartCoroutine(RenableAfterSeconds(collision, 0.5f));
+                    }
+                }
+                else
+                {
+                    body2d.velocity = new Vector2(body2d.velocity.x, 0);
+                    body2d.velocity += Vector2.up * jumpForce;
 
-                animator.SetBool("Jumped", true);
+                    jumpedFromRope = false;
+
+                    animator.SetBool("Jumped", true);
+                }
+
             }
+        }
+
+        private IEnumerator RenableAfterSeconds(Collider2D collisionToReEnable, float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            collisionToReEnable.enabled = true;
         }
     }
 }

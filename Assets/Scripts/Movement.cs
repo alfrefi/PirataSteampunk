@@ -10,6 +10,7 @@ namespace MovementWithHook
         Rigidbody2D body2d;
         CharacterCollision charColl;
         private SpriteRenderer sprite;
+        public GameObject sparks;
         private Animator animator;
 
         public float xMov;
@@ -25,8 +26,9 @@ namespace MovementWithHook
         {
             body2d = GetComponent<Rigidbody2D>();
             charColl = GetComponent<CharacterCollision>();
-            sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
-            animator = transform.GetChild(0).GetComponent<Animator>();
+            sprite = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+            sparks = transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+            animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -44,10 +46,12 @@ namespace MovementWithHook
             if ( xMov > 0)
             {
                 sprite.flipX = false;
+                sparks.transform.localScale = new Vector3(1, 1, 1);
             } 
             else  if (xMov < 0 )
             {
                 sprite.flipX = true;
+                sparks.transform.localScale = new Vector3(-1, 1, 1);
             }
 
             animator.SetBool("IsRunning", xMov != 0);

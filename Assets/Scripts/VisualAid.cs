@@ -8,10 +8,12 @@ public class VisualAid : MonoBehaviour
     public LayerMask VisualAidLayerMask;
     private Collider2D col2d;
 
+    public bool ShowCursor = true;
+
     private void Awake()
     {
         col2d = GetComponent<Collider2D>();
-        Cursor.visible = false;
+        Cursor.visible = ShowCursor;
     }
 
     private void Update()

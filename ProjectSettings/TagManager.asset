@@ -12,6 +12,8 @@ TagManager:
   - Pulpo
   - CanDamagePlayer
   - Platform
+  - Pergamino
+  - BorderConfiner
   layers:
   - Default
   - TransparentFX
@@ -46,11 +48,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: FarBackground
+    uniqueID: 2766157643
+    locked: 0
+  - name: Background
+    uniqueID: 161390533
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Characters
     uniqueID: 2276640615
+    locked: 0
+  - name: Enemies
+    uniqueID: 3853345387
+    locked: 0
+  - name: FX
+    uniqueID: 4254198845
     locked: 0
   - name: Foreground
     uniqueID: 624094201

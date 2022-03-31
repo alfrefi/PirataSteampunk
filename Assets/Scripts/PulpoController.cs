@@ -72,7 +72,8 @@ public class PulpoController : MonoBehaviour
         switch (attack)
         {
             case 1:
-                bashAttack.enabled = true;
+                //bashAttack.enabled = true;
+                laserAttack.enabled = true;
                 break;
             case 2:
                 laserAttack.enabled = true;

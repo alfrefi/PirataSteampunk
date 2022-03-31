@@ -7,7 +7,7 @@ namespace MovementWithHook
     public class CharacterCollision : MonoBehaviour
     {
         public LayerMask groundLayer;
-
+        public Collider2D collision;
         public bool onGround;
         //public bool onWall;
         //public bool onRightWall;
@@ -28,7 +28,8 @@ namespace MovementWithHook
         // Update is called once per frame
         void Update()
         {
-            onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+            collision = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+            onGround = collision;
             //onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer)
             //    || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
 

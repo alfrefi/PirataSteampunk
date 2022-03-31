@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    static GameManager _instance;
     public bool hasMuerto;
     public bool juegoTerminado;
 
-   private void Awake()
+    private void Awake()
     {
-        if (Instance != null)
+        if ( _instance != null )
         {
             Destroy(this.gameObject);
         }
         else
         {
-            Instance = this;
+            _instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-    } 
+    }
+    public static GameManager Instance 
+    { 
+        get { 
+            if (_instance == null )
+            {
+                _instance = GameObject.Find("GameManager").GetComponent<GameManager>();
+            }
+            return _instance; 
+        } 
+    }
 }

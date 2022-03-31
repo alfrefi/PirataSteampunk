@@ -23,7 +23,7 @@ public class OpcionMenuJugar : MonoBehaviour
 
     private void OnMouseDown() 
     {
-        SceneManager.LoadScene(sceneName: "FightDesign");
+        SceneManager.LoadScene(sceneName: "BossFight");
     }
     
 }

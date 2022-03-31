@@ -1,3 +1,4 @@
+using MovementWithHook;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,6 @@ public class Hook : MonoBehaviour
         else if ( !lastPosition.Equals(Vector3.negativeInfinity) )
         {
             lastPosition = Vector3.negativeInfinity;
-        }
+        } 
     }
 }
