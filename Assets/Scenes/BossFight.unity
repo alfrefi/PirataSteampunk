@@ -3890,11 +3890,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7437947734563992168, guid: f95794e51dc87724c9bbcf1620b33007, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7437947734563992181, guid: f95794e51dc87724c9bbcf1620b33007, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7437947734698258845, guid: f95794e51dc87724c9bbcf1620b33007, type: 3}
       propertyPath: m_Name
@@ -3944,6 +3944,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7437947734842113985, guid: f95794e51dc87724c9bbcf1620b33007, type: 3}
+      propertyPath: hookCollider
+      value: 
+      objectReference: {fileID: 1007581355}
     - target: {fileID: 7437947736071962226, guid: f95794e51dc87724c9bbcf1620b33007, type: 3}
       propertyPath: m_camera
       value: 
@@ -5529,6 +5533,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1007581355 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7437947735934631353, guid: f95794e51dc87724c9bbcf1620b33007, type: 3}
+  m_PrefabInstance: {fileID: 731568715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1038258141
 GameObject:
   m_ObjectHideFlags: 0
