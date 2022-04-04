@@ -1,0 +1,470 @@
+fileFormatVersion: 2
+guid: 902dbc04f3bc5b140a92851e8eb5c624
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: PillarRock9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 169
+      y: 124
+      width: 169
+      height: 46
+    spriteID: 76a62c0388aff804283607e047c2b588
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 148, y: -197}
+  - name: PillarRock8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 157
+      height: 83
+    spriteID: e673d771145ece64092ac69e7bd2da8b
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -22, y: -268}
+  - name: PillarRock7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 286
+      width: 72
+      height: 65
+    spriteID: 053b0822d04921b4c83b03f92d703c95
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -64, y: 59}
+  - name: PillarRock6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 214
+      width: 87
+      height: 64
+    spriteID: c4ede68f10e0cc94a835aaf8adc498df
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -71, y: 34}
+  - name: PillarRockDet3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 491
+      y: 57
+      width: 17
+      height: 11
+    spriteID: 0dff00f892a963d4eb904c237fd0883c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 375, y: -123}
+  - name: PillarRock5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 95
+      width: 93
+      height: 111
+    spriteID: 5eab8b8a895a2644e864087b42008bf5
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -64, y: -7}
+  - name: PillarRockDet2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 467
+      y: 86
+      width: 13
+      height: 11
+    spriteID: 12176bbcfec6ef24bbef98c9d13ae61b
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 348, y: 16}
+  - name: PillarRockDet1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 467
+      y: 57
+      width: 16
+      height: 21
+    spriteID: ca124eb2333e6174c98dabf5e41898d2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 385, y: -20}
+  - name: PillarRock4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 359
+      width: 66
+      height: 53
+    spriteID: b8ed160a70cdd3841988f985f077e567
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -80, y: 288}
+  - name: PillarRock3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 353
+      y: 57
+      width: 106
+      height: 46
+    spriteID: fc32ebd850ab32d4d94f7d0f33bcb30f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 284, y: 13}
+  - name: PillarRock2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 169
+      y: 57
+      width: 176
+      height: 59
+    spriteID: 53c0443de5f749b40982f1043ab58120
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 147, y: 42}
+  - name: PillarRock1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 169
+      y: 4
+      width: 271
+      height: 45
+    spriteID: 4e172e4e02688e54d98eae0e959a3394
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 169, y: 4}
+  platformSettings: []
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 512
+  importedTextureHeight: 512
+  documentSize: {x: 271, y: 367}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 512
+  textureActualHeight: 512
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: PillarRock9
+    spriteName: PillarRock9
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 76a62c0388aff804283607e047c2b588
+    layerID: 13
+    mosaicPosition: {x: 169, y: 124}
+  - name: PillarRock8
+    spriteName: PillarRock8
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e673d771145ece64092ac69e7bd2da8b
+    layerID: 12
+    mosaicPosition: {x: 4, y: 4}
+  - name: PillarRock7
+    spriteName: PillarRock7
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 053b0822d04921b4c83b03f92d703c95
+    layerID: 11
+    mosaicPosition: {x: 4, y: 286}
+  - name: PillarRock6
+    spriteName: PillarRock6
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c4ede68f10e0cc94a835aaf8adc498df
+    layerID: 10
+    mosaicPosition: {x: 4, y: 214}
+  - name: PillarRockDet3
+    spriteName: PillarRockDet3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0dff00f892a963d4eb904c237fd0883c
+    layerID: 9
+    mosaicPosition: {x: 491, y: 57}
+  - name: PillarRock5
+    spriteName: PillarRock5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5eab8b8a895a2644e864087b42008bf5
+    layerID: 8
+    mosaicPosition: {x: 4, y: 95}
+  - name: PillarRockDet2
+    spriteName: PillarRockDet2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 12176bbcfec6ef24bbef98c9d13ae61b
+    layerID: 7
+    mosaicPosition: {x: 467, y: 86}
+  - name: PillarRockDet1
+    spriteName: PillarRockDet1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ca124eb2333e6174c98dabf5e41898d2
+    layerID: 6
+    mosaicPosition: {x: 467, y: 57}
+  - name: PillarRock4
+    spriteName: PillarRock4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b8ed160a70cdd3841988f985f077e567
+    layerID: 5
+    mosaicPosition: {x: 4, y: 359}
+  - name: PillarRock3
+    spriteName: PillarRock3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fc32ebd850ab32d4d94f7d0f33bcb30f
+    layerID: 4
+    mosaicPosition: {x: 353, y: 57}
+  - name: PillarRock2
+    spriteName: PillarRock2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 53c0443de5f749b40982f1043ab58120
+    layerID: 3
+    mosaicPosition: {x: 169, y: 57}
+  - name: PillarRock1
+    spriteName: PillarRock1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4e172e4e02688e54d98eae0e959a3394
+    layerID: 2
+    mosaicPosition: {x: 169, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: PillarPlatformRocksNoWalkPaths Texture
+  prefabAssetName: PillarPlatformRocksNoWalkPaths Prefab
+  spriteLibAssetName: PillarPlatformRocksNoWalkPaths Sprite Lib
+  secondarySpriteTextures: []

@@ -25,7 +25,9 @@ public class AngryShakeBehavior : MonoBehaviour
 
         mainCamera = Camera.main;
         player = GameObject.Find("Player").GetComponent<CharacterCollision>();
-        platforms = GameObject.FindGameObjectsWithTag("Platform").AsQueryable().Select(g => g.GetComponent<Collider2D>()).ToList();
+        platforms = GameObject.FindGameObjectsWithTag("Platform").AsQueryable()
+            .Where(g => g.GetComponent<Collider2D>() != null)
+            .Select(g => g.GetComponent<Collider2D>()).ToList();
     }
 
     // Update is called once per frame

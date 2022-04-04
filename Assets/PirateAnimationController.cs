@@ -11,6 +11,7 @@ public class PirateAnimationController : MonoBehaviour
     public Vector3 PivotPositionOnAir;
     public Vector3 PivotPositionHooked;
 
+    public List<SpriteRenderer> armSprites;
     public List<SpriteRenderer> hookSprites;
     public Collider2D hookCollider;
 
@@ -77,7 +78,18 @@ public class PirateAnimationController : MonoBehaviour
         if ( hookArmIsShown )
         {
             hookArmIsShown = false;
+            armSprites.ForEach(h => h.enabled = false);
             hookSprites.ForEach(h => h.enabled = false);
+            hookCollider.enabled = false;
+        }
+    }
+
+    public void HideArm()
+    {
+        if ( hookArmIsShown )
+        {
+            hookArmIsShown = false;
+            armSprites.ForEach(h => h.enabled = false);
             hookCollider.enabled = false;
         }
     }
