@@ -23,6 +23,7 @@ public class PirateAnimationController : MonoBehaviour
     private LineRenderer rope;
 
     private bool hookArmIsShown;
+    private bool armIsShown;
 
     // Start is called before the first frame update
     void Awake()
@@ -68,6 +69,7 @@ public class PirateAnimationController : MonoBehaviour
         if ( !hookArmIsShown )
         {
             hookArmIsShown = true;
+            armIsShown = true;
             hookSprites.ForEach(h => h.enabled = true);
             hookCollider.enabled = true;
         }
@@ -86,9 +88,9 @@ public class PirateAnimationController : MonoBehaviour
 
     public void HideArm()
     {
-        if ( hookArmIsShown )
+        if ( armIsShown )
         {
-            hookArmIsShown = false;
+            armIsShown = false;
             armSprites.ForEach(h => h.enabled = false);
             hookCollider.enabled = false;
         }

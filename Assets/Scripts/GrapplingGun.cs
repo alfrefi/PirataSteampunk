@@ -54,6 +54,8 @@ namespace MovementWithHook
         [HideInInspector] public GameObject grapplePoint;
         [HideInInspector] public Vector2 grappleDistanceVector;
 
+        private bool leftClick;
+        private bool rightClick;
         public bool shotGrappleGun = false;
 
         public float attackDelay = 0.2f;
@@ -70,7 +72,9 @@ namespace MovementWithHook
 
         private void Update()
         {
-            if ( Input.GetKeyUp(KeyCode.Mouse0) && !shotGrappleGun && attackDelayCounter == 0 && (!grappleRope.isGrappling) )
+            leftClick = Input.GetKeyUp(KeyCode.Mouse0);
+            rightClick = Input.GetKeyUp(KeyCode.Mouse1);
+            if ( (leftClick || rightClick) && !shotGrappleGun && attackDelayCounter == 0 && (!grappleRope.isGrappling) )
             {
                 shotGrappleGun = true;
                 movement.CanMove = false;
@@ -183,7 +187,7 @@ namespace MovementWithHook
             
             RaycastHit2D[] _hits = Physics2D.RaycastAll(firePoint.position, distanceVector.normalized, distanceVector.magnitude, grapplebleLayers);
 
-            if ( _hits.Length > 0 )
+            if ( _hits.Length > 0 && leftClick )
             {
 
                 if ( Vector2.Distance(firePoint.position, mousePosition) <= 10 )
