@@ -13,7 +13,7 @@ public class PulpoController : MonoBehaviour
     private BashAttack bashAttack;
     private LaserAttack laserAttack;
     private MissileAttackBehavior missileAttackBehavior;
-    private AngryShakeBehavior angryshakeBehavior;
+    private AngryShakeBehavior angryShakeBehavior;
 
     public GameObject[] lifePoints;
     public int vidaBoss;
@@ -24,13 +24,19 @@ public class PulpoController : MonoBehaviour
 
     public bool ProtectedArmorsOnAttack { get; private set; }
 
+    public ParticleSystem Explosion;
+    private ParticleSystem explosionPS;
+    [SerializeField, ColorUsage(showAlpha: true, hdr: true)]
+    Color FullExplosionColor;
+    private bool startExplosionGlow;
+
     void Awake()
     {
         flyingBehavior = GetComponent<FlyingBehavior>();
         bashAttack = GetComponent<BashAttack>();
         laserAttack = GetComponent<LaserAttack>();
         missileAttackBehavior = GetComponent<MissileAttackBehavior>();
-        angryshakeBehavior = GetComponent<AngryShakeBehavior>();
+        angryShakeBehavior = GetComponent<AngryShakeBehavior>();
 
         circuloCollider = GetComponent<CircleCollider2D>();
         circuloCollider.enabled = false;
@@ -42,11 +48,17 @@ public class PulpoController : MonoBehaviour
         lifePoints = GameObject.FindGameObjectsWithTag("BossLifeUnit");
         vidaBoss = lifePoints.Length;
 
+        if ( startExplosionGlow )
+        {
+            StartCoroutine(ExplosionGlow());
+        }
+
         if(vidaBoss == 0)
         {
-            GameManager.Instance.juegoTerminado = true;
+            return;
         }
-        if ( !flyingBehavior.enabled && !bashAttack.enabled && !laserAttack.enabled && !angryshakeBehavior.enabled)
+
+        if ( !flyingBehavior.enabled && !bashAttack.enabled && !laserAttack.enabled && !angryShakeBehavior.enabled)
         {
             ChangeArmorProtection(true);
 
@@ -63,20 +75,30 @@ public class PulpoController : MonoBehaviour
     private IEnumerator DoAttack()
     {
         yield return new WaitForSeconds(timeBetweenAttacks);
-        
+
         ChangeArmorProtection(ProtectedArmorsOnAttack);
 
         int attack = UnityEngine.Random.Range(1, 3);
+        
+        if (flyingBehavior != null )
+        {
+            flyingBehavior.enabled = false;
+        }
 
-        flyingBehavior.enabled = false;
         switch (attack)
         {
             case 1:
-                //bashAttack.enabled = true;
-                laserAttack.enabled = true;
+                if ( bashAttack != null )
+                {
+                    bashAttack.enabled = true;
+                    //laserAttack.enabled = true;
+                }
                 break;
             case 2:
-                laserAttack.enabled = true;
+                if ( laserAttack != null )
+                {
+                    laserAttack.enabled = true;
+                }
                 break;
         }
     }
@@ -94,27 +116,84 @@ public class PulpoController : MonoBehaviour
         Debug.Log("Armaduras restantes: " + armorsGO.Length);
         //lifePoints = GameObject.FindGameObjectsWithTag("BossLifeUnit");
         //vidaBoss = lifePoints.Length;
-        int count = 1;
-        if(armorsGO.Length == 0)
+        if (collision.name == "Hook")
         {
-            foreach (GameObject lifePoint in lifePoints)
+            if ( armorsGO.Length == 0 && lifePoints.Length > 0)
             {
-                if(count == 1)
-                {
-                    Destroy(lifePoint);
-                }
-                count++;
+                Destroy(lifePoints[0]);
             }
         }
+
+        if ( lifePoints.Length == 0 ) 
+        {
+            DisablePulpo();
+            if ( Explosion != null )
+            {
+                explosionPS = Instantiate(Explosion, transform.position, Quaternion.identity);
+                explosionPS.Play();
+                startExplosionGlow = true;
+            }
+        }
+    }
+
+    private IEnumerator ExplosionGlow()
+    {
+        startExplosionGlow = false;
+        var sprite = GetComponent<SpriteRenderer>();
+        Color currentColor = sprite.material.GetColor("_HDRColor");
+
+        float elapsedTime = 0f;
+        float timeForFullExplosion = 8f;
+        yield return new WaitForSeconds(2);
+
+        while ( elapsedTime < timeForFullExplosion )
+        {
+            elapsedTime += Time.deltaTime;
+            currentColor = sprite.material.GetColor("_HDRColor");
+
+            int luminosity = (int)Mathf.Lerp(0, 100, elapsedTime / timeForFullExplosion);
+            //Color color = Color.LerpUnclamped(startColor, FullExplosionColor, elapsedTime/timeForFullExplosion);
+
+            float factor = Mathf.Pow(2,luminosity);
+            Color color = new Color(currentColor.r*factor,currentColor.g*factor,currentColor.b*factor);
+
+            sprite.material.SetColor("_HDRColor", color);
+            //elapsedTime += Time.deltaTime;
+            yield return false;
+        }
+        GameManager.Instance.juegoTerminado = true;
+        //explosionPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        yield return false;
+
+        //Destroy(explosionPS.gameObject);
+        //yield return false;
+    }
+
+    private void DisablePulpo()
+    {
+        //TODO Arreglar que al deshabilitar (con IsActive?) deje de hacer el comportamiento
+        circuloCollider.enabled = false;
+        //flyingBehavior.enabled = false;
+        //bashAttack.enabled = false;
+        //laserAttack.enabled = false;
+        //missileAttackBehavior.enabled = false;
+        //angryShakeBehavior.enabled = false;
+
+        circuloCollider.enabled = false;
+        Destroy(flyingBehavior);
+        Destroy(bashAttack);
+        Destroy(laserAttack);
+        Destroy(missileAttackBehavior);
+        Destroy(angryShakeBehavior);
     }
 
     internal void RemoveArmor(ArmorScript armorScript)
     {
         armors.Remove(armorScript);
 
-        if (angryshakeBehavior != null )
+        if (angryShakeBehavior != null )
         {
-            angryshakeBehavior.enabled = true;
+            angryShakeBehavior.enabled = true;
         }
 
         ChangeStance(PulpoStances.Aggressive);
@@ -123,21 +202,32 @@ public class PulpoController : MonoBehaviour
 
     public void ChangeStance(PulpoStances newStance)
     {
+        //No hace nada si los ataques 
+        if ( bashAttack == null && laserAttack == null && missileAttackBehavior == null) { return; } 
+
         // Hacer algo para esperar a que termine de hacer un ataque si es que lo esta haciendo antes de cambiar de estado
-        if ( bashAttack.enabled || laserAttack.enabled ) { return; }
+        if ( (bashAttack != null && bashAttack.enabled) || (laserAttack != null && laserAttack.enabled) ) { return; }
 
         stance = newStance;
         if (stance == PulpoStances.Aggressive)
         {
             ProtectedArmorsOnAttack = true;
             laserAttack.attackOrientation = Orientation.Horizontal;
-            missileAttackBehavior.enabled = true;
+
+            if ( missileAttackBehavior != null )
+            {
+                missileAttackBehavior.enabled = true;
+            }
         } 
         else if (stance == PulpoStances.Vulnerable)
         {
             ProtectedArmorsOnAttack = false;
             laserAttack.attackOrientation = Orientation.Vertical;
-            missileAttackBehavior.enabled = false;
+            
+            if ( missileAttackBehavior != null )
+            {
+                missileAttackBehavior.enabled = false;
+            }
         }
     }
 

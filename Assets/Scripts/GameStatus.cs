@@ -38,11 +38,13 @@ public class GameStatus : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (Time.timeScale == 0 && GameManager.Instance.hasMuerto == true) 
+            if (Time.timeScale == 0 && (GameManager.Instance.hasMuerto || GameManager.Instance.juegoTerminado)) 
             {
                 ResumeGame();
                 GameManager.Instance.hasMuerto = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                GameManager.Instance.juegoTerminado = false;
+                text.enabled = false;
+                SceneManager.LoadScene("Menu");
             }
         }
     }

@@ -10,12 +10,16 @@ public class MissileAttackBehavior : MonoBehaviour
     public Transform SpawnPoint;
 
     private bool isShooting = false;
+    public bool waitForAttackToShoot = false;
+    public bool stackGlowOnAttack = true;
 
+    private PulpoController pulpoController;
     private GlowingBehavior glowingBehavior;
 
     // Start is called before the first frame update
     void Awake()
     {
+        pulpoController = GetComponent<PulpoController>();
         glowingBehavior = GetComponent<GlowingBehavior>();
     }
 
@@ -30,8 +34,18 @@ public class MissileAttackBehavior : MonoBehaviour
     {
         isShooting = true;
         yield return new WaitForSeconds(DelayBetweenMissiles);
-        glowingBehavior.glowForSecondsTime = 1f;
-        glowingBehavior.DoGlowDeGlow = true;
+        
+        while( waitForAttackToShoot && pulpoController.AttackInProgress() )
+        {
+            yield return false;
+        }
+
+        if ( stackGlowOnAttack || !pulpoController.AttackInProgress() )
+        {
+            glowingBehavior.glowForSecondsTime = 1f;
+            glowingBehavior.DoGlowDeGlow = true;
+        }
+
         Instantiate(MissilePrefab, SpawnPoint.position, Quaternion.identity);
         isShooting = false;
     }

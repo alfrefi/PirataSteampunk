@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,10 @@ public class GuidedMissile : MonoBehaviour
 	public float speed = 5f;
 	public float rotateSpeed = 200f;
 
+	public ParticleSystem explosion;
+
 	private Rigidbody2D rb;
+
 
 	void Start()
 	{
@@ -36,11 +40,35 @@ public class GuidedMissile : MonoBehaviour
         if ( collision.name == "HitCollider" && collision.transform.parent.tag == "Player" )
         {
 			collision.GetComponent<PlayerHitCollider>().SubstractLife();
-            Destroy(gameObject);
+			StartCoroutine(DestroyMissile());
         }
 		else if ( collision.name == "Hook" )
         {
-			Destroy(gameObject);
+			StartCoroutine(DestroyMissile());
 		}
 	}
+
+    IEnumerator DestroyMissile()
+    {
+        if (explosion != null )
+        {
+			var newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+			newExplosion.Play();
+			StartCoroutine(RemoveParticleSystem(newExplosion));
+			Destroy(gameObject);
+
+			yield return null;
+		}
+		else
+        {
+			Destroy(gameObject);
+			yield return null;
+		}
+    }
+
+    private IEnumerator RemoveParticleSystem(ParticleSystem particle)
+    {
+		yield return new WaitForSeconds(particle.main.duration);
+		Destroy(particle.gameObject);
+    }
 }

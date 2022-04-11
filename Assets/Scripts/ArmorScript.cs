@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ArmorScript : MonoBehaviour
 {
     public bool isProtected = true;
     public PulpoController pulpoController;
+    public ParticleSystem Explosion;
 
     SpriteRenderer sprite;
     Collider2D collider2d;
@@ -36,6 +38,20 @@ public class ArmorScript : MonoBehaviour
 
     private void OnDestroy() 
     {
+        if (Explosion != null )
+        {
+            var explosion = Instantiate(Explosion, transform.position, transform.rotation);
+            explosion.Play();
+            //StartCoroutine(RemoveParticleSystem(explosion));
+        }
+
         pulpoController.RemoveArmor(this);
+    }
+
+
+    private IEnumerator RemoveParticleSystem(ParticleSystem particle)
+    {
+        yield return new WaitForSeconds(particle.main.duration);
+        Destroy(particle.gameObject);
     }
 }
