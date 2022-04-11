@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerHitCollider : MonoBehaviour
 {
-    public GameObject[] lifePoints;
+    public List<GameObject> lifePoints;
     public int vidaPlayer;
     public List<string> CanDamagePlayer;
     
@@ -21,17 +22,13 @@ public class PlayerHitCollider : MonoBehaviour
     void Awake()
     {
         animator = sprite.transform.GetComponent<Animator>();
+        lifePoints = GameObject.FindGameObjectsWithTag("LifeUnit").ToList();
     }
 
     // Update is called once per frame
     void Update()
     {
-        lifePoints = GameObject.FindGameObjectsWithTag("LifeUnit");
-        vidaPlayer = lifePoints.Length;
-        if(vidaPlayer == 0)
-        {
-            GameManager.Instance.hasMuerto = true;
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,8 +48,15 @@ public class PlayerHitCollider : MonoBehaviour
             sparks.SetActive(true);
 
             Destroy(lifePoints[0]);
+            lifePoints.Remove(lifePoints[0]);
 
+            vidaPlayer = lifePoints.Count;
             Invoke("canTakeDamageAgain", DamageDelay);
+        }
+
+        if ( vidaPlayer == 0 )
+        {
+            GameManager.Instance.hasMuerto = true;
         }
     }
 

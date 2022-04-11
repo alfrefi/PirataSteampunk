@@ -36,22 +36,15 @@ public class ArmorScript : MonoBehaviour
         }
     }
 
-    private void OnDestroy() 
+    public void Destroy() 
     {
+        pulpoController.RemoveArmor(this);
+        Destroy(gameObject);
+
         if (Explosion != null )
         {
             var explosion = Instantiate(Explosion, transform.position, transform.rotation);
             explosion.Play();
-            //StartCoroutine(RemoveParticleSystem(explosion));
         }
-
-        pulpoController.RemoveArmor(this);
-    }
-
-
-    private IEnumerator RemoveParticleSystem(ParticleSystem particle)
-    {
-        yield return new WaitForSeconds(particle.main.duration);
-        Destroy(particle.gameObject);
     }
 }

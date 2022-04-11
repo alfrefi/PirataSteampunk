@@ -138,7 +138,7 @@ namespace MovementWithHook
 
                 if ( (grapplePoint.transform.parent?.name ?? "") == "armor" )
                 {
-                    Destroy(grapplePoint.transform.parent.gameObject);
+                    grapplePoint.transform.parent.gameObject.GetComponent<ArmorScript>().Destroy();
                 }
 
                 Destroy(grapplePoint);

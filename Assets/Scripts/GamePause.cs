@@ -32,7 +32,6 @@ public class GamePause : MonoBehaviour
         buttons[2].enabled = false;
         buttons[2].GetComponentInChildren<Text>().enabled = false;
         //Debug.Log("hijos del pergamino: " + image.transform.childCount);
-        Debug.Log("total botones: " + buttons.Length);
     }
 
     // Update is called once per frame

@@ -30,7 +30,6 @@ public class OpcionPausaConfig : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         //do stuff
-        Debug.Log("entro al boton de config");
         text.color = Color.red;
     }
 

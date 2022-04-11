@@ -11,7 +11,6 @@ public class OpcionPausaMenu : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public Image image;
     void Start()
     {
-       Debug.Log("hijos: " + this.transform.childCount);
        //text = this.transform.GetComponentInChildren<Text>();
        text = this.transform.GetChild(0).GetComponent<Text>();
        image = this.transform.parent.GetComponent<Image>();

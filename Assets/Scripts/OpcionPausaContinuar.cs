@@ -12,7 +12,6 @@ public class OpcionPausaContinuar : MonoBehaviour, IPointerEnterHandler, IPointe
     public Text[] textos;
     void Start()
     {
-       Debug.Log("hijos: " + this.transform.childCount);
        //text = this.transform.GetComponentInChildren<Text>();
        text = this.transform.GetChild(0).GetComponent<Text>();
        textos = this.transform.parent.GetComponentsInChildren<Text>();
@@ -21,7 +20,6 @@ public class OpcionPausaContinuar : MonoBehaviour, IPointerEnterHandler, IPointe
     public void ResumeGame()
     {
         //Debug.Log("REGRESA AL JUEGO");
-        Debug.Log("nombre parent: " + this.transform.parent.name);
         image.enabled = false;
         text.enabled = false;
         textos[0].enabled = false;
@@ -33,7 +31,6 @@ public class OpcionPausaContinuar : MonoBehaviour, IPointerEnterHandler, IPointe
     public void OnPointerEnter(PointerEventData eventData)
     {
         //do stuff
-        Debug.Log("entro al boton de continuar");
         text.color = Color.red;
     }
 

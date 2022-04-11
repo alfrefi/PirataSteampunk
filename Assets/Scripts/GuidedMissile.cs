@@ -40,35 +40,25 @@ public class GuidedMissile : MonoBehaviour
         if ( collision.name == "HitCollider" && collision.transform.parent.tag == "Player" )
         {
 			collision.GetComponent<PlayerHitCollider>().SubstractLife();
-			StartCoroutine(DestroyMissile());
+			DestroyMissile();
         }
 		else if ( collision.name == "Hook" )
         {
-			StartCoroutine(DestroyMissile());
+			DestroyMissile();
 		}
 	}
 
-    IEnumerator DestroyMissile()
+    void DestroyMissile()
     {
         if (explosion != null )
         {
 			var newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
 			newExplosion.Play();
-			StartCoroutine(RemoveParticleSystem(newExplosion));
 			Destroy(gameObject);
-
-			yield return null;
 		}
 		else
         {
 			Destroy(gameObject);
-			yield return null;
 		}
-    }
-
-    private IEnumerator RemoveParticleSystem(ParticleSystem particle)
-    {
-		yield return new WaitForSeconds(particle.main.duration);
-		Destroy(particle.gameObject);
     }
 }

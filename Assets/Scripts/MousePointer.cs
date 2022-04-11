@@ -22,6 +22,8 @@ public class MousePointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ( Time.timeScale == 0 ) return;
+        
         Vector2 aimPosition;
         //Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePosition = Camera.main.GetWorldPositionOnPlane(Input.mousePosition);
